@@ -1,41 +1,46 @@
 <template>
-  <view class="content">
-    <image class="logo" src="/static/logo.png" />
-    <view class="text-area">
-      <text class="title">{{ title }}</text>
-    </view>
+  <view class="page">
+    <text class="title">首页</text>
+    <button class="btn" @tap="handleCheck">调用健康检查</button>
+    <text v-if="result" class="result">{{ result }}</text>
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-const title = ref('Hello')
+import { ref } from 'vue';
+import { checkHealth } from '../../api/health';
+
+const result = ref('');
+
+async function handleCheck() {
+  try {
+    const data = await checkHealth();
+    result.value = `后端正常: uptime=${data.uptime.toFixed(2)}s`;
+  } catch (err) {
+    result.value = '后端连接失败';
+    console.error(err);
+  }
+}
 </script>
 
-<style>
-.content {
+<style scoped>
+.page {
+  padding: 32rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
-
-.logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin-top: 200rpx;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50rpx;
-}
-
-.text-area {
-  display: flex;
-  justify-content: center;
-}
-
 .title {
   font-size: 36rpx;
-  color: #8f8f94;
+  font-weight: bold;
+  margin-top: 120rpx;
+}
+.btn {
+  margin-top: 48rpx;
+  width: 80%;
+}
+.result {
+  margin-top: 32rpx;
+  color: #333;
 }
 </style>
