@@ -1,4 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
+import { Throttle } from '@nestjs/throttler';
 import { AuthService } from './auth.service';
 import { WxLoginDto } from './dto/wx-login.dto';
 import { BindPhoneDto } from './dto/bind-phone.dto';
@@ -10,6 +11,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Public()
+  @Throttle({ default: { ttl: 60000, limit: 10 } })
   @Post('wx-login')
   async wxLogin(@Body() dto: WxLoginDto) {
     return this.authService.wxLogin(dto.code);
