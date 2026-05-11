@@ -23,6 +23,12 @@
       "style": {
         "navigationBarTitleText": "编辑资料"
       }
+    },
+    {
+      "path": "pages/user/index",
+      "style": {
+        "navigationBarTitleText": "用户主页"
+      }
     }
   ],
   "tabBar": {
