@@ -7,7 +7,7 @@ export interface ApiResponse<T = unknown> {
 
 export interface RequestOptions {
   url: string;
-  method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
+  method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
   data?: Record<string, unknown> | unknown[];
   header?: Record<string, string>;
   skipAuth?: boolean;

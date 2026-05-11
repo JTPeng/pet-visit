@@ -1,12 +1,12 @@
 import { createPinia } from 'pinia';
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
+import { createPersistedState } from 'pinia-plugin-persistedstate';
 
 const pinia = createPinia();
 pinia.use(
-  piniaPluginPersistedstate({
+  createPersistedState({
     storage: {
-      getItem: (key) => uni.getStorageSync(key) || null,
-      setItem: (key, value) => uni.setStorageSync(key, value),
+      getItem: (key: string) => uni.getStorageSync(key) || null,
+      setItem: (key: string, value: string) => uni.setStorageSync(key, value),
     },
   }),
 );
