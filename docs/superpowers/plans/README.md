@@ -27,7 +27,7 @@ pet-visit/
 
 | 阶段 | 计划文件 | 状态 | 依赖 |
 |---|---|---|---|
-| P1 基础骨架 | [01-foundation](./2026-05-09-01-foundation.md) | 🟡 已编写，待实施 | 无 |
+| P1 基础骨架 | [01-foundation](./2026-05-09-01-foundation.md) | ✅ 已完成 | 无 |
 | P2 用户体系 | `2026-05-09-02-user-auth.md`（待编写） | ⚪ 未开始 | P1 |
 | P3 文件上传 | `2026-05-09-03-upload-oss.md`（待编写） | ⚪ 未开始 | P1, P2 |
 | P4 内容审核 | `2026-05-09-04-moderation.md`（待编写） | ⚪ 未开始 | P1, P2 |
@@ -43,26 +43,26 @@ pet-visit/
 
 **目标**：搭建前后端工程骨架，所有后续模块可立即接入。
 
-- [ ] P1-T1 后端：核心依赖安装与目录结构
-- [ ] P1-T2 后端：环境配置模块（ConfigModule + dotenv）
-- [ ] P1-T3 后端：Prisma 接入 + 数据库连接
-- [ ] P1-T4 后端：全局响应拦截器（统一 API 响应格式）
-- [ ] P1-T5 后端：全局异常过滤器（统一错误格式）
-- [ ] P1-T6 后端：日志模块（pino）
-- [ ] P1-T7 后端：参数校验管道（class-validator 全局启用）
-- [ ] P1-T8 后端：CORS 中间件
-- [ ] P1-T9 后端：健康检查接口
-- [ ] P1-T10 后端：docker-compose（PostgreSQL 开发环境）
-- [ ] P1-T11 前端：依赖安装（Pinia、持久化插件）
-- [ ] P1-T12 前端：目录结构整理（api/stores/utils/types/components）
-- [ ] P1-T13 前端：环境变量配置（dev/prod）
-- [ ] P1-T14 前端：请求封装（uni.request + Token 注入 + 错误处理）
-- [ ] P1-T15 前端：Pinia 接入 + 用户 store 骨架
-- [ ] P1-T16 前端：3 Tab 导航配置（pages.json）
-- [ ] P1-T17 前端：3 个 Tab 页面骨架（首页 / 发帖 / 我的）
-- [ ] P1-T18 前端：全局通用样式（主题色、通用变量）
-- [ ] P1-T19 联调：前端调用后端健康检查接口
-- [ ] P1-T20 README：更新 serve/README.md 与 wx-app 启动文档
+- [x] P1-T1 后端：核心依赖安装
+- [x] P1-T2 后端：环境配置模块（ConfigModule + 校验）
+- [x] P1-T3 本地 PostgreSQL（Homebrew 安装与启动）
+- [x] P1-T4 后端：Prisma 接入 + 数据库连接
+- [x] P1-T5 后端：全局响应拦截器（统一 API 响应格式）
+- [x] P1-T6 后端：全局异常过滤器（统一错误格式）
+- [x] P1-T7 后端：参数校验管道（ValidationPipe）
+- [x] P1-T8 后端：日志模块（pino）
+- [x] P1-T9 后端：CORS
+- [x] P1-T10 后端：健康检查接口
+- [x] P1-T11 后端：全局 /api 前缀
+- [x] P1-T12 前端：依赖安装（Pinia、持久化插件）
+- [x] P1-T13 前端：环境变量配置（dev/prod）
+- [x] P1-T14 前端：请求封装（uni.request + Token 注入 + 错误处理）
+- [x] P1-T15 前端：健康检查 API
+- [x] P1-T16 前端：Pinia 接入 + 用户 store 骨架
+- [x] P1-T17 前端：3 Tab 导航 + 页面骨架
+- [x] P1-T18 前端：全局通用样式（主题色、通用变量）
+- [x] P1-T19 联调：前后端联调 + 类型检查 + H5 构建
+- [x] P1-T20 README：更新 serve/README.md 与 wx-app 启动文档
 
 **完成标准**：后端启动 → 健康检查接口返回 200；前端启动 → 3 Tab 可切换 → 首页调用健康接口成功。
 
