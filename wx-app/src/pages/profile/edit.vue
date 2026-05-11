@@ -3,10 +3,7 @@
     <view class="form">
       <view class="form-item">
         <text class="label">头像</text>
-        <view class="avatar-wrap" @tap="chooseAvatar">
-          <image class="avatar" :src="form.avatar" mode="aspectFill" />
-          <text class="avatar-hint">点击更换</text>
-        </view>
+        <AvatarUploader v-model="form.avatar" />
       </view>
 
       <view class="form-item">
@@ -39,6 +36,7 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
 import { useUserStore } from '../../stores/user';
+import AvatarUploader from '../../components/AvatarUploader.vue';
 
 const userStore = useUserStore();
 
@@ -50,11 +48,6 @@ const form = reactive({
 
 const saving = ref(false);
 
-function chooseAvatar() {
-  // P3 阶段实现 OSS 上传，当前仅占位提示
-  uni.showToast({ title: '头像上传将在 P3 阶段实现', icon: 'none' });
-}
-
 async function handleSave() {
   if (!form.nickname.trim()) {
     uni.showToast({ title: '昵称不能为空', icon: 'none' });
@@ -65,6 +58,7 @@ async function handleSave() {
   try {
     await userStore.updateProfile({
       nickname: form.nickname.trim(),
+      avatar: form.avatar,
       bio: form.bio.trim() || undefined,
     });
     uni.showToast({ title: '保存成功', icon: 'success' });
