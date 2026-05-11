@@ -14,6 +14,18 @@ class EnvironmentVariables {
 
   @IsString()
   LOG_LEVEL: string;
+
+  @IsString()
+  WX_APPID: string;
+
+  @IsString()
+  WX_SECRET: string;
+
+  @IsString()
+  JWT_SECRET: string;
+
+  @IsString()
+  JWT_EXPIRES_IN: string;
 }
 
 export function validateEnv(config: Record<string, unknown>) {
