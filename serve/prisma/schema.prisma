@@ -7,8 +7,39 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// P1 阶段占位：后续模块会在此添加 model
-model HealthCheck {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id        String   @id @default(cuid())
+  openid    String   @unique
+  unionid   String?  @unique
+  phone     String?
+  nickname  String
+  avatar    String
+  bio       String?
+  role      Role     @default(USER)
+  banUntil  DateTime?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  followers Follow[] @relation("following")
+  following Follow[] @relation("follower")
+
+  @@map("users")
+}
+
+model Follow {
+  id          Int      @id @default(autoincrement())
+  followerId  String   @map("follower_id")
+  followingId String   @map("following_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  follower  User @relation("follower", fields: [followerId], references: [id])
+  following User @relation("following", fields: [followingId], references: [id])
+
+  @@unique([followerId, followingId])
+  @@map("follows")
 }
