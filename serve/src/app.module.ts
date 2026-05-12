@@ -13,6 +13,7 @@ import { FollowModule } from './modules/follow/follow.module';
 import { UploadModule } from './modules/upload/upload.module';
 import { ModerationModule } from './modules/moderation/moderation.module';
 import { ReportModule } from './modules/report/report.module';
+import { PetModule } from './modules/pet/pet.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { ReportModule } from './modules/report/report.module';
     UploadModule,
     ModerationModule,
     ReportModule,
+    PetModule,
     HealthModule,
   ],
   providers: [
