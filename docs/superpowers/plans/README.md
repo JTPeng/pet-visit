@@ -30,7 +30,7 @@ pet-visit/
 | P1 基础骨架 | [01-foundation](./2026-05-09-01-foundation.md) | ✅ 已完成 | 无 |
 | P2 用户体系 | [02-user-auth](./2026-05-09-02-user-auth.md) | ✅ 已完成 | P1 |
 | P3 文件上传 | 内嵌实施（本地存储 mock） | ✅ 已完成 | P1, P2 |
-| P4 内容审核 | `2026-05-09-04-moderation.md`（待编写） | ⚪ 未开始 | P1, P2 |
+| P4 内容审核 | 内嵌实施（本地词库 + 微信 Mock） | ✅ 已完成 | P1, P2 |
 | P5 宠物档案 | `2026-05-09-05-pet-profile.md`（待编写） | ⚪ 未开始 | P1, P2, P3, P4 |
 | P6 社区功能 | `2026-05-09-06-community.md`（待编写） | ⚪ 未开始 | P1, P2, P3, P4 |
 | P7 管理后台 | `2026-05-09-07-admin.md`（待编写） | ⚪ 未开始 | P1-P6 |
@@ -108,22 +108,21 @@ pet-visit/
 
 ---
 
-## P4：内容审核
+## P4：内容审核（本地词库 + 微信 Mock）
 
-**目标**：微信 msgSecCheck/imgSecCheck + 本地敏感词库 + 举报 + 封禁。
+**目标**：UGC 合规基础设施，微信接口默认 off，本地词库可直接拦截明显违规。
 
-- [ ] P4-T1 后端：微信 AccessToken 管理（缓存 + 刷新）
-- [ ] P4-T2 后端：msgSecCheck 封装
-- [ ] P4-T3 后端：imgSecCheck 封装
-- [ ] P4-T4 后端：本地敏感词库 + 过滤工具
-- [ ] P4-T5 后端：双审服务（本地词 → 微信接口）
-- [ ] P4-T6 后端：审核队列模型（通过/疑似/违规）
-- [ ] P4-T7 后端：举报模型与接口
-- [ ] P4-T8 后端：违规处罚（警告 → 禁言 → 封号）
-- [ ] P4-T9 后端：用户封禁状态校验（全局 Guard）
-- [ ] P4-T10 前端：举报弹窗组件
-- [ ] P4-T11 前端：被封禁提示页
-- [ ] P4-T12 联调 + 审核流程测试
+- [x] P4-T1 数据模型（SensitiveWord + Report + 相关枚举）
+- [x] P4-T2 后端：本地敏感词服务（自动 seed 12 个词 + 内存缓存）
+- [x] P4-T3 后端：微信审核 Mock 封装（MODERATION_WX_ENABLED 开关）
+- [x] P4-T4 后端：双审 Service（本地 → 微信 → verdict 枚举）
+- [x] P4-T5 后端：举报模块（POST /report）
+- [x] P4-T6 后端：封禁状态检查（JwtStrategy 内检查 banUntil）
+- [x] P4-T7 前端：举报 API + ReportPopup 组件
+- [x] P4-T8 联调验证
+- [x] P4-T9 收尾
+
+**启用真实微信审核**：`.env` 设 `MODERATION_WX_ENABLED=true`（需要小程序已备案+审核通过）。
 
 ---
 
