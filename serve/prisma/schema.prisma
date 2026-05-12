@@ -43,3 +43,57 @@ model Follow {
   @@unique([followerId, followingId])
   @@map("follows")
 }
+
+enum SensitiveCategory {
+  POLITICS
+  PORN
+  GAMBLING
+  AD
+  OTHER
+}
+
+model SensitiveWord {
+  id        Int               @id @default(autoincrement())
+  word      String            @unique
+  category  SensitiveCategory @default(OTHER)
+  createdAt DateTime          @default(now()) @map("created_at")
+
+  @@map("sensitive_words")
+}
+
+enum ReportTargetType {
+  POST
+  COMMENT
+  USER
+}
+
+enum ReportReason {
+  PORN
+  POLITICS
+  AD
+  ATTACK
+  FAKE
+  OTHER
+}
+
+enum ReportStatus {
+  PENDING
+  HANDLED
+  REJECTED
+}
+
+model Report {
+  id          Int              @id @default(autoincrement())
+  reporterId  String           @map("reporter_id")
+  targetType  ReportTargetType @map("target_type")
+  targetId    String           @map("target_id")
+  reason      ReportReason
+  detail      String?
+  status      ReportStatus     @default(PENDING)
+  createdAt   DateTime         @default(now()) @map("created_at")
+  handledAt   DateTime?        @map("handled_at")
+
+  @@index([status])
+  @@index([targetType, targetId])
+  @@map("reports")
+}
