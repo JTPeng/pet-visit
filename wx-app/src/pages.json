@@ -29,6 +29,24 @@
       "style": {
         "navigationBarTitleText": "用户主页"
       }
+    },
+    {
+      "path": "pages/pet/list",
+      "style": {
+        "navigationBarTitleText": "我的宠物"
+      }
+    },
+    {
+      "path": "pages/pet/edit",
+      "style": {
+        "navigationBarTitleText": "宠物档案"
+      }
+    },
+    {
+      "path": "pages/pet/detail",
+      "style": {
+        "navigationBarTitleText": "宠物详情"
+      }
     }
   ],
   "tabBar": {

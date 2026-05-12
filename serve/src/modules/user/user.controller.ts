@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch } from '@nestjs/common';
+import { Body, Controller, Get, Param, Put } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
@@ -13,7 +13,7 @@ export class UserController {
     return this.userService.getProfile(user.id);
   }
 
-  @Patch('me')
+  @Put('me')
   async updateMe(
     @CurrentUser() user: { id: string },
     @Body() dto: UpdateProfileDto,
