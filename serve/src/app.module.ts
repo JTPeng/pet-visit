@@ -12,6 +12,7 @@ import { UserModule } from './modules/user/user.module';
 import { FollowModule } from './modules/follow/follow.module';
 import { UploadModule } from './modules/upload/upload.module';
 import { ModerationModule } from './modules/moderation/moderation.module';
+import { ReportModule } from './modules/report/report.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { ModerationModule } from './modules/moderation/moderation.module';
     FollowModule,
     UploadModule,
     ModerationModule,
+    ReportModule,
     HealthModule,
   ],
   providers: [
