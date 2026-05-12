@@ -28,6 +28,10 @@ model User {
   followers Follow[] @relation("following")
   following Follow[] @relation("follower")
   pets      Pet[]
+  posts     Post[]
+  comments  Comment[]
+  likes     Like[]
+  collects  Collect[]
 
   @@map("users")
 }
@@ -131,4 +135,91 @@ model Pet {
 
   @@index([ownerId])
   @@map("pets")
+}
+
+enum PostStatus {
+  PUBLISHED
+  REVIEWING
+  REJECTED
+}
+
+model Post {
+  id        String     @id @default(cuid())
+  authorId  String     @map("author_id")
+  content   String
+  images    String[]
+  petId     String?    @map("pet_id")
+  tags      String[]
+  status    PostStatus @default(PUBLISHED)
+  likeCount Int        @default(0) @map("like_count")
+  commentCount Int     @default(0) @map("comment_count")
+  collectCount Int     @default(0) @map("collect_count")
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
+
+  author   User      @relation(fields: [authorId], references: [id])
+  comments Comment[]
+  likes    Like[]
+  collects Collect[]
+
+  @@index([authorId])
+  @@index([status, createdAt])
+  @@map("posts")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  postId    String   @map("post_id")
+  authorId  String   @map("author_id")
+  parentId  String?  @map("parent_id")
+  content   String
+  likeCount Int      @default(0) @map("like_count")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  post     Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
+  author   User      @relation(fields: [authorId], references: [id])
+  parent   Comment?  @relation("replies", fields: [parentId], references: [id])
+  replies  Comment[] @relation("replies")
+  likes    Like[]
+
+  @@index([postId, createdAt])
+  @@index([authorId])
+  @@map("comments")
+}
+
+enum LikeTargetType {
+  POST
+  COMMENT
+}
+
+model Like {
+  id         Int            @id @default(autoincrement())
+  userId     String         @map("user_id")
+  targetType LikeTargetType @map("target_type")
+  postId     String?        @map("post_id")
+  commentId  String?        @map("comment_id")
+  createdAt  DateTime       @default(now()) @map("created_at")
+
+  user    User     @relation(fields: [userId], references: [id])
+  post    Post?    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  comment Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, targetType, postId, commentId])
+  @@index([postId])
+  @@index([commentId])
+  @@map("likes")
+}
+
+model Collect {
+  id        Int      @id @default(autoincrement())
+  userId    String   @map("user_id")
+  postId    String   @map("post_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id])
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, postId])
+  @@index([userId])
+  @@map("collects")
 }
