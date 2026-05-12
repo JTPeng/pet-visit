@@ -14,6 +14,7 @@ import { UploadModule } from './modules/upload/upload.module';
 import { ModerationModule } from './modules/moderation/moderation.module';
 import { ReportModule } from './modules/report/report.module';
 import { PetModule } from './modules/pet/pet.module';
+import { PostModule } from './modules/post/post.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { PetModule } from './modules/pet/pet.module';
     ModerationModule,
     ReportModule,
     PetModule,
+    PostModule,
     HealthModule,
   ],
   providers: [
