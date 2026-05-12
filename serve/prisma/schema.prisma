@@ -27,6 +27,7 @@ model User {
 
   followers Follow[] @relation("following")
   following Follow[] @relation("follower")
+  pets      Pet[]
 
   @@map("users")
 }
@@ -96,4 +97,38 @@ model Report {
   @@index([status])
   @@index([targetType, targetId])
   @@map("reports")
+}
+
+enum PetType {
+  CAT
+  DOG
+  OTHER
+}
+
+enum PetGender {
+  MALE
+  FEMALE
+  UNKNOWN
+}
+
+model Pet {
+  id        String    @id @default(cuid())
+  ownerId   String    @map("owner_id")
+  avatar    String?
+  name      String
+  type      PetType
+  breed     String?
+  gender    PetGender @default(UNKNOWN)
+  birthday  DateTime?
+  weight    Float?
+  note      String?
+  isPublic  Boolean   @default(false) @map("is_public")
+  extraInfo Json?     @map("extra_info")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+
+  owner User @relation(fields: [ownerId], references: [id])
+
+  @@index([ownerId])
+  @@map("pets")
 }
