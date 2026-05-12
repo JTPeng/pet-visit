@@ -26,8 +26,8 @@
           <text class="stat-num">{{ userStore.userInfo?.followingCount || 0 }}</text>
           <text class="stat-label">关注</text>
         </view>
-        <view class="stat-item">
-          <text class="stat-num">0</text>
+        <view class="stat-item" @tap="goPetList">
+          <text class="stat-num">{{ petCount }}</text>
           <text class="stat-label">宠物</text>
         </view>
       </view>
@@ -37,7 +37,11 @@
       </view>
 
       <view class="menu">
-        <view class="menu-item" @tap="handleLogout">
+        <view class="menu-item" @tap="goPetList">
+          <text>🐾 我的宠物</text>
+          <text class="menu-arrow">›</text>
+        </view>
+        <view class="menu-item logout" @tap="handleLogout">
           <text>退出登录</text>
         </view>
       </view>
@@ -46,9 +50,24 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+import { onShow } from '@dcloudio/uni-app';
 import { useUserStore } from '../../stores/user';
+import { listMyPets } from '../../api/pet';
 
 const userStore = useUserStore();
+const petCount = ref(0);
+
+onShow(async () => {
+  if (userStore.isLogin) {
+    try {
+      const pets = await listMyPets();
+      petCount.value = pets.length;
+    } catch {
+      petCount.value = 0;
+    }
+  }
+});
 
 async function handleLogin() {
   await userStore.login();
@@ -56,6 +75,10 @@ async function handleLogin() {
 
 function goEdit() {
   uni.navigateTo({ url: '/pages/profile/edit' });
+}
+
+function goPetList() {
+  uni.navigateTo({ url: '/pages/pet/list' });
 }
 
 function handleLogout() {
@@ -178,6 +201,20 @@ function handleLogout() {
   padding: 32rpx;
   font-size: 30rpx;
   color: #666;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+.menu-item:last-child {
+  border-bottom: none;
+}
+.menu-item.logout {
+  justify-content: center;
+  color: #e64340;
+}
+.menu-arrow {
+  font-size: 32rpx;
+  color: #ccc;
 }
 </style>
