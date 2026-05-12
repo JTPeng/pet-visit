@@ -11,6 +11,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
 import { FollowModule } from './modules/follow/follow.module';
 import { UploadModule } from './modules/upload/upload.module';
+import { ModerationModule } from './modules/moderation/moderation.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { UploadModule } from './modules/upload/upload.module';
     UserModule,
     FollowModule,
     UploadModule,
+    ModerationModule,
     HealthModule,
   ],
   providers: [

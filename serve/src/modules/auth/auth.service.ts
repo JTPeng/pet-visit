@@ -92,7 +92,7 @@ export class AuthService {
     return data.phone_info.phoneNumber as string;
   }
 
-  private async getAccessToken(): Promise<string> {
+  async getAccessToken(): Promise<string> {
     if (this.accessToken && Date.now() < this.accessTokenExpiresAt) {
       return this.accessToken;
     }

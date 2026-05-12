@@ -7,6 +7,7 @@ export interface AppConfig {
   wxSecret: string;
   jwtSecret: string;
   jwtExpiresIn: string;
+  moderationWxEnabled: boolean;
 }
 
 export default (): AppConfig => ({
@@ -18,4 +19,5 @@ export default (): AppConfig => ({
   wxSecret: process.env.WX_SECRET ?? '',
   jwtSecret: process.env.JWT_SECRET ?? '',
   jwtExpiresIn: process.env.JWT_EXPIRES_IN ?? '7d',
+  moderationWxEnabled: process.env.MODERATION_WX_ENABLED === 'true',
 });

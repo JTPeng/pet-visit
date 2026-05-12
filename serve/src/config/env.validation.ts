@@ -1,5 +1,5 @@
 import { plainToInstance } from 'class-transformer';
-import { IsIn, IsInt, IsString, Min, validateSync } from 'class-validator';
+import { IsBooleanString, IsIn, IsInt, IsOptional, IsString, Min, validateSync } from 'class-validator';
 
 class EnvironmentVariables {
   @IsIn(['development', 'production', 'test'])
@@ -26,6 +26,10 @@ class EnvironmentVariables {
 
   @IsString()
   JWT_EXPIRES_IN: string;
+
+  @IsOptional()
+  @IsBooleanString()
+  MODERATION_WX_ENABLED?: string;
 }
 
 export function validateEnv(config: Record<string, unknown>) {
