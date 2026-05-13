@@ -33,7 +33,7 @@ pet-visit/
 | P4 内容审核 | 内嵌实施（本地词库 + 微信 Mock） | ✅ 已完成 | P1, P2 |
 | P5 宠物档案 | 内嵌实施 | ✅ 已完成 | P1, P2, P3, P4 |
 | P6 社区功能 | 内嵌实施 | ✅ 已完成 | P1, P2, P3, P4 |
-| P7 管理后台 | `2026-05-09-07-admin.md`（待编写） | ⚪ 未开始 | P1-P6 |
+| P7 管理后台 | 内嵌实施 | ✅ 已完成 | P1-P6 |
 
 **图例**：⚪ 未开始 · 🟡 进行中 · ✅ 已完成
 
@@ -159,27 +159,15 @@ pet-visit/
 
 ## P7：管理后台（移动端 H5）
 
-**目标**：独立 `admin/` 工程，基于 Vue 3 + Vite + TypeScript + Pinia + Vant，方便管理员在手机上处理审核、举报、封禁等敏感操作。
+**目标**：独立 `admin/` 工程，基于 Vue 3 + Rsbuild + TypeScript + Pinia + Vant，方便管理员在手机上处理审核、举报、封禁等敏感操作。
 
-- [ ] P7-T1 后端：Admin 数据模型（独立于 User，账号/密码哈希/角色）
-- [ ] P7-T2 后端：管理员登录接口（账号密码 + JWT，签发独立的 admin Token）
-- [ ] P7-T3 后端：AdminAuthGuard（与普通 AuthGuard 分离）
-- [ ] P7-T4 后端：审核队列接口（`/api/admin/moderation/*`）
-- [ ] P7-T5 后端：举报处理接口（`/api/admin/reports/*`）
-- [ ] P7-T6 后端：敏感词维护接口（`/api/admin/sensitive-words/*`）
-- [ ] P7-T7 后端：用户封禁接口（`/api/admin/users/*/ban`）
-- [ ] P7-T8 后端：管理员种子脚本（创建初始管理员）
-- [ ] P7-T9 前端：`admin/` 工程初始化（Vite + Vue 3 + TS）
-- [ ] P7-T10 前端：Vant 组件库接入 + 移动端 viewport 配置
-- [ ] P7-T11 前端：Pinia + 路由 + 请求封装（与 wx-app 相同思路，独立 Token key）
-- [ ] P7-T12 前端：登录页
-- [ ] P7-T13 前端：主框架（Tabbar：审核 / 举报 / 词库 / 我的）
-- [ ] P7-T14 前端：审核队列页（列表 + 详情 + 通过/拒绝）
-- [ ] P7-T15 前端：举报列表页（列表 + 处理）
-- [ ] P7-T16 前端：敏感词维护页（新增/删除/搜索）
-- [ ] P7-T17 前端：用户封禁页（搜索 + 封禁/解封）
-- [ ] P7-T18 部署：独立子域名 + Nginx 配置（可选 IP 白名单 / Basic Auth）
-- [ ] P7-T19 联调 + 端到端测试
+- [x] P7-T1 前端：admin 工程初始化（Rsbuild + Vue 3 + Vant + Pinia + Vue Router）
+- [x] P7-T2 后端：Admin 模型 + 登录接口 + AdminGuard + 种子脚本（admin/admin123）
+- [x] P7-T3 后端：管理员 API（审核队列/举报处理/敏感词维护/用户封禁解封）
+- [x] P7-T4 前端：登录页 + Tabbar 主框架（审核/举报/词库/用户）
+- [x] P7-T5 前端：审核队列页 + 举报列表页 + 敏感词管理页 + 用户封禁页
+- [x] P7-T6 联调验证（登录/权限隔离/CRUD 全部通过）
+- [x] P7-T7 收尾
 
 ---
 
