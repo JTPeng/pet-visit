@@ -8,7 +8,7 @@ import { CommentService } from './comment.service';
 
 @Module({
   imports: [ModerationModule],
-  controllers: [PostController, InteractionController],
+  controllers: [InteractionController, PostController],
   providers: [PostService, InteractionService, CommentService],
   exports: [PostService],
 })
