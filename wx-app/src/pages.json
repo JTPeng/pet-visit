@@ -47,6 +47,12 @@
       "style": {
         "navigationBarTitleText": "宠物详情"
       }
+    },
+    {
+      "path": "pages/post/detail",
+      "style": {
+        "navigationBarTitleText": "帖子详情"
+      }
     }
   ],
   "tabBar": {
