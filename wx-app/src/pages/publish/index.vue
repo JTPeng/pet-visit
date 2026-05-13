@@ -53,6 +53,12 @@
     <button class="publish-btn" :disabled="!canPublish || publishing" @tap="handlePublish">
       {{ publishing ? '发布中...' : '发布' }}
     </button>
+
+    <BindPhonePopup
+      :visible="showBindPhone"
+      @update:visible="showBindPhone = $event"
+      @success="handlePublish"
+    />
   </view>
 </template>
 
@@ -60,6 +66,7 @@
 import { ref, computed } from 'vue';
 import { onShow } from '@dcloudio/uni-app';
 import ImagePicker from '../../components/ImagePicker.vue';
+import BindPhonePopup from '../../components/BindPhonePopup.vue';
 import { createPost } from '../../api/post';
 import { listMyPets, type Pet } from '../../api/pet';
 import { useUserStore } from '../../stores/user';
@@ -73,6 +80,7 @@ const selectedTags = ref<string[]>([]);
 const selectedPetId = ref('');
 const pets = ref<Pet[]>([]);
 const publishing = ref(false);
+const showBindPhone = ref(false);
 
 const canPublish = computed(() => content.value.trim().length > 0 || images.value.length > 0);
 
@@ -103,7 +111,7 @@ async function handlePublish() {
     return;
   }
   if (!userStore.hasPhone) {
-    uni.showToast({ title: '请先绑定手机号', icon: 'none' });
+    showBindPhone.value = true;
     return;
   }
   if (!canPublish.value) return;

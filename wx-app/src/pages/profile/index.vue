@@ -41,10 +41,24 @@
           <text>🐾 我的宠物</text>
           <text class="menu-arrow">›</text>
         </view>
+        <view class="menu-item" @tap="goCollects">
+          <text>⭐ 我的收藏</text>
+          <text class="menu-arrow">›</text>
+        </view>
+        <view v-if="!userStore.hasPhone" class="menu-item" @tap="showBindPhone = true">
+          <text>📱 绑定手机号</text>
+          <text class="menu-arrow">›</text>
+        </view>
         <view class="menu-item logout" @tap="handleLogout">
           <text>退出登录</text>
         </view>
       </view>
+
+      <BindPhonePopup
+        :visible="showBindPhone"
+        @update:visible="showBindPhone = $event"
+        @success="onPhoneBound"
+      />
     </view>
   </view>
 </template>
@@ -54,9 +68,11 @@ import { ref } from 'vue';
 import { onShow } from '@dcloudio/uni-app';
 import { useUserStore } from '../../stores/user';
 import { listMyPets } from '../../api/pet';
+import BindPhonePopup from '../../components/BindPhonePopup.vue';
 
 const userStore = useUserStore();
 const petCount = ref(0);
+const showBindPhone = ref(false);
 
 onShow(async () => {
   if (userStore.isLogin) {
@@ -79,6 +95,14 @@ function goEdit() {
 
 function goPetList() {
   uni.navigateTo({ url: '/pages/pet/list' });
+}
+
+function goCollects() {
+  uni.navigateTo({ url: '/pages/post/collects' });
+}
+
+function onPhoneBound() {
+  uni.showToast({ title: '绑定成功', icon: 'success' });
 }
 
 function handleLogout() {
