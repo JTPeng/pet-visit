@@ -12,6 +12,15 @@ enum Role {
   ADMIN
 }
 
+model Admin {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("admins")
+}
+
 model User {
   id        String   @id @default(cuid())
   openid    String   @unique
