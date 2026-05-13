@@ -2,6 +2,7 @@
 import { onLaunch, onShow, onHide } from '@dcloudio/uni-app';
 import { useUserStore } from './stores/user';
 import { getToken } from './api/request';
+import DevPanel from './components/DevPanel.vue';
 
 onLaunch(async () => {
   const userStore = useUserStore();
@@ -18,6 +19,9 @@ onLaunch(async () => {
 onShow(() => {});
 onHide(() => {});
 </script>
+<template>
+  <DevPanel />
+</template>
 <style>
 page {
   background-color: #faf8f5;
