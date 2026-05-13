@@ -130,42 +130,58 @@ function onPostUpdate(updated: PostItem) {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: #f8f8f8;
+  background: #faf8f5;
 }
 .tabs {
   display: flex;
-  background: #fff;
-  padding: 16rpx 32rpx;
-  gap: 32rpx;
-  border-bottom: 2rpx solid #f5f5f5;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 20rpx 32rpx 0;
+  gap: 48rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.03);
 }
 .tab {
   font-size: 30rpx;
-  color: #999;
-  padding-bottom: 12rpx;
+  color: #c7c7cc;
+  padding-bottom: 16rpx;
+  position: relative;
+  font-weight: 500;
 }
 .tab.active {
-  color: #333;
-  font-weight: bold;
-  border-bottom: 4rpx solid #ff8a47;
+  color: #2d2d2d;
+  font-weight: 700;
+}
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40rpx;
+  height: 6rpx;
+  border-radius: 3rpx;
+  background: linear-gradient(135deg, #ff8a47, #ffb347);
 }
 .feed {
   flex: 1;
-  padding: 16rpx;
+  padding: 20rpx;
 }
 .empty {
-  text-align: center;
-  padding-top: 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 240rpx;
 }
 .empty-text {
   font-size: 28rpx;
-  color: #999;
+  color: #c7c7cc;
 }
 .loading,
 .no-more {
   text-align: center;
-  padding: 24rpx;
+  padding: 32rpx;
   font-size: 24rpx;
-  color: #999;
+  color: #c7c7cc;
 }
 </style>

@@ -121,50 +121,54 @@ function handleLogout() {
 <style scoped>
 .page {
   min-height: 100vh;
-  background: #f8f8f8;
+  background: #faf8f5;
 }
 .guest {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 160rpx;
+  padding-top: 200rpx;
 }
 .guest-avatar {
-  width: 160rpx;
-  height: 160rpx;
+  width: 180rpx;
+  height: 180rpx;
   border-radius: 50%;
-  background: #eee;
+  background: #f5f0eb;
+  border: 6rpx solid #fff3ea;
 }
 .guest-text {
-  margin-top: 24rpx;
+  margin-top: 32rpx;
   font-size: 28rpx;
-  color: #999;
+  color: #c7c7cc;
 }
 .login-btn {
   margin-top: 48rpx;
   width: 60%;
-  background: #ff8a47;
+  background: linear-gradient(135deg, #ff8a47, #ffb347);
   color: #fff;
-  border-radius: 44rpx;
+  border-radius: 48rpx;
   font-size: 32rpx;
-  line-height: 88rpx;
+  font-weight: 600;
+  line-height: 92rpx;
   text-align: center;
+  box-shadow: 0 8rpx 24rpx rgba(255, 138, 71, 0.3);
 }
 .profile {
-  padding: 32rpx;
+  padding: 24rpx;
 }
 .header {
   display: flex;
   align-items: center;
-  background: #fff;
-  padding: 32rpx;
-  border-radius: 16rpx;
+  background: #ffffff;
+  padding: 36rpx;
+  border-radius: 24rpx;
+  box-shadow: 0 2rpx 16rpx rgba(255, 138, 71, 0.06);
 }
 .avatar {
-  width: 120rpx;
-  height: 120rpx;
+  width: 128rpx;
+  height: 128rpx;
   border-radius: 50%;
-  background: #eee;
+  border: 6rpx solid #fff3ea;
 }
 .info {
   margin-left: 24rpx;
@@ -172,21 +176,23 @@ function handleLogout() {
 }
 .nickname {
   font-size: 36rpx;
-  font-weight: bold;
-  color: #333;
+  font-weight: 700;
+  color: #2d2d2d;
 }
 .bio {
   font-size: 26rpx;
-  color: #999;
+  color: #8e8e93;
   margin-top: 8rpx;
+  line-height: 1.5;
 }
 .stats {
   display: flex;
   justify-content: space-around;
-  background: #fff;
-  margin-top: 24rpx;
-  padding: 32rpx;
-  border-radius: 16rpx;
+  background: #ffffff;
+  margin-top: 20rpx;
+  padding: 36rpx;
+  border-radius: 24rpx;
+  box-shadow: 0 2rpx 16rpx rgba(255, 138, 71, 0.06);
 }
 .stat-item {
   display: flex;
@@ -194,51 +200,55 @@ function handleLogout() {
   align-items: center;
 }
 .stat-num {
-  font-size: 36rpx;
-  font-weight: bold;
-  color: #333;
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #2d2d2d;
 }
 .stat-label {
   font-size: 24rpx;
-  color: #999;
+  color: #c7c7cc;
   margin-top: 8rpx;
 }
 .actions {
-  margin-top: 24rpx;
+  margin-top: 20rpx;
 }
 .edit-btn {
   width: 100%;
-  background: #fff;
+  background: #ffffff;
   color: #ff8a47;
-  border: 2rpx solid #ff8a47;
-  border-radius: 44rpx;
+  border: 2rpx solid #ffe0cc;
+  border-radius: 48rpx;
   font-size: 30rpx;
-  line-height: 80rpx;
+  font-weight: 500;
+  line-height: 84rpx;
   text-align: center;
+  box-shadow: 0 2rpx 12rpx rgba(255, 138, 71, 0.08);
 }
 .menu {
-  margin-top: 24rpx;
-  background: #fff;
-  border-radius: 16rpx;
+  margin-top: 20rpx;
+  background: #ffffff;
+  border-radius: 24rpx;
+  box-shadow: 0 2rpx 16rpx rgba(255, 138, 71, 0.06);
+  overflow: hidden;
 }
 .menu-item {
-  padding: 32rpx;
+  padding: 32rpx 28rpx;
   font-size: 30rpx;
-  color: #666;
+  color: #2d2d2d;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2rpx solid #f5f5f5;
+  border-bottom: 2rpx solid #f5f0eb;
 }
 .menu-item:last-child {
   border-bottom: none;
 }
 .menu-item.logout {
   justify-content: center;
-  color: #e64340;
+  color: #ff6b6b;
 }
 .menu-arrow {
-  font-size: 32rpx;
-  color: #ccc;
+  font-size: 28rpx;
+  color: #c7c7cc;
 }
 </style>

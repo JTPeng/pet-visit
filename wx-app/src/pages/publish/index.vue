@@ -143,66 +143,76 @@ async function handlePublish() {
 <style scoped>
 .page {
   min-height: 100vh;
-  background: #f8f8f8;
+  background: #faf8f5;
   padding: 24rpx;
 }
 .form {
-  background: #fff;
-  border-radius: 16rpx;
-  padding: 24rpx;
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 28rpx;
+  box-shadow: 0 2rpx 16rpx rgba(255, 138, 71, 0.06);
 }
 .content-input {
   width: 100%;
-  min-height: 200rpx;
+  min-height: 240rpx;
   font-size: 30rpx;
-  line-height: 1.6;
+  line-height: 1.7;
   box-sizing: border-box;
+  color: #2d2d2d;
 }
 .char-count {
   display: block;
   text-align: right;
   font-size: 22rpx;
-  color: #ccc;
+  color: #c7c7cc;
   margin-bottom: 24rpx;
 }
 .section {
-  margin-top: 24rpx;
+  margin-top: 28rpx;
 }
 .section-title {
   font-size: 26rpx;
-  color: #666;
+  color: #8e8e93;
   margin-bottom: 16rpx;
   display: block;
+  font-weight: 500;
 }
 .tag-list,
 .pet-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 12rpx;
+  gap: 16rpx;
 }
 .tag-item,
 .pet-item {
-  padding: 8rpx 24rpx;
-  background: #f5f5f5;
+  padding: 10rpx 28rpx;
+  background: #f5f0eb;
   border-radius: 32rpx;
   font-size: 26rpx;
-  color: #666;
+  color: #8e8e93;
+  transition: all 0.2s;
 }
 .tag-item.active,
 .pet-item.active {
   background: #fff3ea;
   color: #ff8a47;
+  font-weight: 500;
+  box-shadow: 0 2rpx 8rpx rgba(255, 138, 71, 0.15);
 }
 .publish-btn {
-  margin-top: 32rpx;
+  margin-top: 36rpx;
   width: 100%;
-  background: #ff8a47;
+  background: linear-gradient(135deg, #ff8a47, #ffb347);
   color: #fff;
-  border-radius: 44rpx;
+  border-radius: 48rpx;
   font-size: 32rpx;
-  line-height: 88rpx;
+  font-weight: 600;
+  line-height: 92rpx;
+  box-shadow: 0 8rpx 24rpx rgba(255, 138, 71, 0.3);
+  letter-spacing: 2rpx;
 }
 .publish-btn[disabled] {
   opacity: 0.5;
+  box-shadow: none;
 }
 </style>

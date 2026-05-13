@@ -18,4 +18,21 @@ onLaunch(async () => {
 onShow(() => {});
 onHide(() => {});
 </script>
-<style></style>
+<style>
+page {
+  background-color: #faf8f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  color: #2d2d2d;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+button {
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+button::after {
+  border: none;
+}
+</style>
